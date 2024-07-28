@@ -1,0 +1,204 @@
+VD1: React + .NET Core Finance Project: App Overview + React Install
+- Install react syntax
+  + npm install create-react-app (without name because already inside name)
+  + npx create-react-app frontend --template typescript
+    (Name the front is 'frontend')
+
+- Plain Jane Reactjs (Regular reactjs)
+  + tsconfig.json is control panel for your FE app
+  + .tsx file is a jsx version
+  + stick to .tsx to min your errors
+
+- Set ext Snippets ES6 on VS (Every Project - Every Installation)
+  + JSX - rafce / TSX - tsrafce
+
+VD2: React Typescript 2023 - 2. JSX
+- JSX is a Reactjs version of HTML
+- Lỗi “Cannot be compiled under ‘–isolatedModules’ because it is 
+  considered a global script file” xảy ra khi chúng ta có một tệp 
+  trong dự án không chứa câu lệnh import hoặc export. Để khắc phục 
+  lỗi này, bạn cần thêm một dòng export {} vào tệp để biến nó thành 
+  một ES module1.
+- Thuộc tính overflow trong CSS xác định điều gì sẽ xảy ra nếu một 
+  thành phần box tràn nội dung.
+- JSX <div> là smoke screen sau đó đó nó translate sang react React.CreateElement
+
+VD3: React Typescript 2023 - 3. Props
+- Dịch vụ ngân hàng ở mý : thì sẽ có 1 cái tube để giao tiếp tiền giữa Ginkoin vào
+  user thì pros nó tương tự như tube đó , đa dạng hóa giá trị truyền để các component
+  hiển thị 
+
+- Phân biệt giữa Interface và Type trong khai Props
+  
+  [Type] 
+  + Sử dụng từ khóa type để định nghĩa một kiểu dữ liệu.
+    Nguyên thủy cũng như tùy chỉnh
+    - Tùy chỉnh ví dụ như : 
+      + Kiểu tuple 
+      type Data = [number, string];
+      + Kiểu union
+      type Color = "blue" | "red" | "yellow" | "purple";
+
+  [Interface]
+  + Interface sử dụng định nghĩa một kiểu dữ liệu.
+    Và mô tả cấu trúc của một đối tượng. Có thể extend
+          interface Bear extends Animal {
+          honey: boolean;
+          }
+
+  [KẾT LUẬN]
+  việc sử dụng type hay interface phụ thuộc vào yêu cầu cụ 
+  thể trong dự án của bạn. Nếu bạn cần định nghĩa kiểu dữ 
+  liệu nguyên thủy hoặc union, hãy sử dụng type. 
+  Nếu bạn muốn mô tả cấu trúc của đối tượng, hãy sử dụng interface
+
+- Ở Card.tsx ta có khai báo interfce đối tượng, thì ta phải trang bị
+  cho tụi nó các props đã khai ở interface
+  const Card = ({ companyName, ticker, price }: Props) => {}
+  Và ở trang sử dụng cái component Card cũng phải fill các tham số
+  
+VD4: React Typescript 2023 - 4. Function Components
+- FUnction is Object
+- Because is Object we can type lize them from params to Function
+- Hãy type cả function và return
+
++ Hãy đi sâu vào type function với React FC<Props>
+  và có return type là JSX.Element 
+
++ Type function : FunctionName : React.FC<Props>
++ Type return : Sau cái Function Type hoặc Tên function thì
+  : JSX.Element 
+
+CHƯA HIỂU CON TYPE LẮM
+
+VD5: React Typescript 2023 - 5. State
+
+- Mô tả CRUD as Storing CHỨA and Manipulating Thao tác Data
+- Và stage là cái Storing data trên 
+- Specific rule for Reactjs State 
+- React là các component được render và khi rerender thì phải 
+  restore stage vì webpage có store đâu 
+- Thế nên dùng predefine hook để utilize memory để lưu stage
+- Cái hook đó được gọi là useState 
+
+VD6: React Typescript 2023 - 6. Event Handlers
+- Event là 1 đoạn code được thực thi khi bạn tương tác với button
+  or page 
+- Thay vì addEventListener vv với JS thì ReactJS có build sẵn addEventListener
+  vào onChange luôn 
+- type in an event ; TS là kiểm soát type
+- 
+
+VD7: React Typescript 2023 - 10. Conditional Rendering
+
+VD8: React Typescript 2023 - 11. Lists
+
+VD15: React Typescript 2023 - 15. Tailwind
+- npm install -D tailwindcss
+- npx tailwindcss init - to config out file 
+  - auto create boilerplate bản mẫu 
+
+VD16: React Typescript 2023 - 16. React Router
+- npm install -save react-router       TRINH TU 1
+- npm install -save react-router-dom   TRINH TU 2
+
+- npm install --save @types/react-router-dom   TRINH TU 3
+- npm install --save @types/react-router       TRINH TU 4
+
+Cái lỗi không chạy router search được là bởi vì
+- Cái app và router chưa được clear sạch các import
+
+VD17: React Typescript 2023 - 17. useEffect
+Hurdle : RaoCan
+Cognizant : NhanThuc
+3 Ways to use UseEffect 
+- Run in side component
+- Run once and forget : put [] and the end of UEffect : {},[])
+- Referential Equality Mode : Chế độ bình đẳng tham chiếu
+  --> When value change - trigger UseEffect : {},[obj.value]
+
+VD18: act Typescript 2023 - 18. Dashboard
+- React Outlet là 1 thành phần của React Router, dùng làm nơi
+  chứa cho các route con bên trong một route cha, cho phép
+  các route lồng nhau, giúp NPTrien tạo cấu trúc điều hướng
+  phức tạp trong ứng dụng của họ
+
+- React Outlet quản lý các route con của trang chính
+[
+import React from "react";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+
+// Import các component cho các route con
+import Home from "./Home";
+import About from "./About";
+import Contact from "./Contact";
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Outlet />}>
+          {/* React Outlet ở đây */}
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+};
+export default App;
+
+]
+- Trong ví dụ trên React Outlet dùng để hiển thị nội
+dung các route con Home/About/Contact khi chúng được 
+kích hoạt, Có thể thay đổi nội dung của R O bằng cách
+chỉ định các route con tương ứng
+
+- Children và React.ReactNode trong CompanyDashboard
+
+  1_Trong react, children là 1 prop đặc biệt được sử 
+    dụng để truyền các thành phần con vd: Components
+    hoặc HTML code vào thành phần cha
+  2_Khi dùng {Children} trong 1 thành phần thì bạn đang
+    truyền tất cả các thành phần con được đặt bên trong
+    thành phần cha đó 
+  3_Trong đoạn mã, CompanyDashboard nhận 1 prop là 
+    children và hiển thị nội dung của children bên trong
+    
+    - Children có thể là 1 thành phần duy nhất hoặc là
+      1 danh sách các thành phần con
+
+  4_React.ReactNode : 
+    - RRN là 1 kiểu dữ liệu trong Ts dùng để biểu diễn
+    các thành phần con trong React
+
+  Gồm các loại dữ liệu sau : 
+    - ReactElement : Đại diện cho 1 thành phần React
+    - string - number 
+    - ReactFragment : Dùng để nhóm các thành phần con
+    - v..v..
+
+  Trong CompanyDashboard thì children trong props 
+  được khai báo là React.ReactNode cho phép bạn truyền
+  bất kì thành phần con nào vào CompanyDashboard
+
+- What is Children trong reactjs
+  Children prop refer to the child element that are passed to a React
+  component . When create a custom component and nest other components
+  or element within it => those nested component or element become 
+  the children of custom component 
+
+  children prop allows you to manipulate and transform the JSX 
+  received as the children prop within your component
+
+- JSX ? if 
+ <> {company ? ( ) : (
+      <div>Company not found!</div>
+    )
+    }
+ </>
+If company Object not exist then print not found otherwise implement
+Code in braket
+
+
